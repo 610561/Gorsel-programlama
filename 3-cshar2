@@ -1,0 +1,29 @@
+// Data/AppDbContext.cs
+using Microsoft.EntityFrameworkCore;
+using UcakRezervasyon.Models;
+
+public class AppDbContext : DbContext
+{
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+    public DbSet<Ucak> Ucaklar { get; set; }
+    public DbSet<Lokasyon> Lokasyonlar { get; set; }
+    public DbSet<Rezervasyon> Rezervasyonlar { get; set; }
+}
+
+// Startup.cs
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+    services.AddControllersWithViews()
+        .AddRazorRuntimeCompilation();
+}
+
+// appsettings.json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=ucakrezervasyon.db"
+  },
+  // ...
+}

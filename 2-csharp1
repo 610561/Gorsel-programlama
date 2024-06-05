@@ -1,0 +1,31 @@
+// Models/Ucak.cs
+public class Ucak
+{
+    public int Id { get; set; }
+    public string Model { get; set; }
+    public string Marka { get; set; }
+    public string SeriNo { get; set; }
+    public int KoltukKapasitesi { get; set; }
+}
+
+// Models/Lokasyon.cs
+public class Lokasyon
+{
+    public int Id { get; set; }
+    public string Ulke { get; set; }
+    public string Sehir { get; set; }
+    public string Havaalani { get; set; }
+    public bool Aktif { get; set; }
+}
+
+// Models/Rezervasyon.cs
+public class Rezervasyon
+{
+    public int Id { get; set; }
+    public int UcakId { get; set; }
+    public Ucak Ucak { get; set; }
+    public string MusteriAdi { get; set; }
+    public string MusteriSoyadi { get; set; }
+    public int KoltukNo { get; set; }
+    public bool Satildi { get; set; }
+}
