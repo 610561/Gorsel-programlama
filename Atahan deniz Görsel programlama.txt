@@ -1,0 +1,31 @@
+@model IEnumerable<Rezervasyon>
+@{
+    ViewData["Title"] = "Rezervasyonlar";
+}
+
+<h1>Rezervasyonlar</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Koltuk No</th>
+            <th>Durum</th>
+            <th>Müşteri Bilgileri</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr style="background-color:@(item.Satildi ? "red" : "green")">
+            <td>@item.KoltukNo</td>
+            <td>@(item.Satildi ? "Satıldı" : "Boş")</td>
+            <td>
+                @if (item.Satildi)
+                {
+                    <span>@item.MusteriAdi @item.MusteriSoyadi</span>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
